@@ -10,6 +10,7 @@ public class SegundoControle : MonoBehaviour
     public int Max;
     public int numero;
     public Text numerotxt;
+    public static int numerotexto;
 
     public static int conteudo;
 
@@ -17,17 +18,20 @@ public class SegundoControle : MonoBehaviour
     void Start()
     {
         numero = Random.Range(Min, Max);
+        numerotexto = numero;
     }
 
     // Update is called once per frame
     void Update()
     {
         //Debug.Log(conteudo);
-        numerotxt.text = numero.ToString();
+        numerotxt.text = numerotexto.ToString();
 
         if(conteudo == numero)
         {
+            conteudo = 0;
             SceneManager.LoadScene("Fase2");
+            
         }
     }
 

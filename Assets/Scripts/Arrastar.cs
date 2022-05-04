@@ -5,6 +5,8 @@ using UnityEngine;
 public class Arrastar : MonoBehaviour
 {
     private Vector3 posStart;
+    public bool move;
+    private Vector3 pos;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,8 +34,16 @@ public class Arrastar : MonoBehaviour
                 }
             }
         }
+        if (Input.GetTouch(0).phase == TouchPhase.Ended)
+        {
+            if (move)
+            {
+                transform.position = pos;
+            }
+            
+        }
 
-        
+
     }
    
 
@@ -43,18 +53,11 @@ public class Arrastar : MonoBehaviour
         {
             Debug.Log("entrou");
             SegundoControle.conteudo += 1;
-            Destroy(this);
+            Destroy(gameObject);
+            SegundoControle.numerotexto -= 1;
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Celeiro")
-        {
-            Debug.Log("entrou");
-            SegundoControle.conteudo += 1;
-            Destroy(this);
-        }
-    }
+    
 }
 
